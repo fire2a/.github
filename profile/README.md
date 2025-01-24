@@ -22,23 +22,13 @@ __4. [Documentation](https://github.com/fire2a/docs):__
 - All subjects except code
 
 ```mermaid
-graph TD;
-    Fire2a-->Fire_Simulator;
-    Fire2a-->QGIS_Interface;
-    Fire2a-->python_interface;
-    Fire_Simulator-->Cell2FireW;
-    QGIS_Interface-->toolbox_plugin;
-    python_interface-->fire2a_lib;
+flowchart LR;
+    id1((Fire2a))--simulate wildfires-->id2(Cell2FireW);
+    id1--friendly graphical interface-->id3(QGIS proc.toolbox Plugin);
+    id1--algorithms-->id4(Python Library);
 ```
 
 # Developer setup
-```mermaid
-graph TD;
-    python-venv-->QGIS;
-    python-venv-->python-library;
-    QGIS-->toolbox-plugin;
-    toolbox-plugin-->Cell2Fire;
-```
 1. get QGIS
 2. get the repos
 3. symlink them
@@ -66,14 +56,14 @@ sudo apt install qgis qgis-plugin-grass
 fire=~/fire
 mkdir -p $fire
 
-# cell2fire
+# get cell2fireW
 cd $fire
 git clone git@github.com:fire2a/C2F-W.git C2F
 sudo apt install g++-12 libboost-all-dev libeigen3-dev libtiff-dev
 cd C2F/Cell2Fire
 make
 
-# python libs
+# get python library
 cd $fire
 sudo apt install python3-venv 
 python3 -m venv venv --system-site-packages # needs system qgis packages
@@ -85,8 +75,8 @@ pip install -r requirements.code.txt
 pip install -r requirements.txt
 pip install --editable .
 
+# get toolbox
 cd $fire
-# toolbox
 git clone git@github.com:fire2a/fire-analytics-qgis-processing-toolbox-plugin.git toolbox
 ```
 
