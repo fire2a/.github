@@ -1,32 +1,44 @@
-# About us
-| Role | Where | Method |
-| --- | --- | --- | 
-| Outreach |  https://www.fire2a.com | fire2a@fire2a.com | 
-| User docs |  https://fire2a.github.io/docs/ | github-issues "forum" |
-| documentacion usuarios |  https://fire2a.github.io/documentacion/ | github-issues "forum" |
-| Algorithms docs |  https://fire2a.github.io/fire2a-lib/ | Pull Requests |
-| Developer docs |  https://www.github.com/fire2a | Pull Requests |
+# Index
+1. [About Fire2a](#about-fire2a)
+2. [Getting help](#getting-help)
+3. [Contributing](#contributing)
+4. [Developer setup](#developer-setup)
+    1. [Get latest qgis](#1-get-latest-qgis)
+    2. [Get Cell2Fire, python libs and QGIS toolboox-plugin](#2-get-cell2fire-python-libs-and-qgis-toolboox-plugin)
+    3. [symlink them](#3-symlink-them)
+    4. [run](#4-run) 
+# About Fire2a
+_We are a team dedicated to finding scientific and technological solutions to mitigate the effects of wildfires. We believe open-source collaboration is key and also providing custom consulting services for real-world organizations. [Contact us](mailto:fire2a@fire2a.com)_
 
-__1. [Cell2FireW](https://github.com/fire2a/C2F-W):__  
-- WildFire Simulator  
-- Command Line Interface  
+_Our solutions involve the development of novel methodologies through the integration of various mathematical and technological tools. These tools include machine learning for fire ignition modeling, spatially explicit wildfire simulators, fire risk metrics, species distribution models, stochastic and multiobjective optimization, and simulation-based optimization._
 
-__2. [Fire-ToolBox](https://github.com/fire2a/fire-analytics-qgis-processing-toolbox-plugin):__  
-- Friendly interface for Cell2Fire + Optimization and Analytics tools, etc.  
-- QGIS Interfaces (x5)  
+_Our goal is create fire-resilient landscapes while minimizing potential carbon emissions, protecting wildlife biodiversity, and ensuring the safety of human communities._
 
-__3. [Algorithms-libs](https://github.com/fire2a/fire2a-lib):__  
-- Algorithms and common GIS tasks Python library
+## Main repos overview:
 
-__4. [Documentation](https://github.com/fire2a/docs):__  
-- All subjects except code
+__1. [Cell2FireW](https://github.com/fire2a/C2F-W):__  C++ command line WildFire simulator ([forked](https://github.com/Cell2Fire))
 
-```mermaid
-flowchart LR;
-    id1((Fire2a))--simulate wildfires-->id2(Cell2FireW);
-    id1--friendly graphical interface-->id3(QGIS proc.toolbox Plugin);
-    id1--algorithms-->id4(Python Library);
-```
+__2. [Fire-Analytics-ToolBox](https://github.com/fire2a/fire-analytics-qgis-processing-toolbox-plugin):__ Friendly [QGIS](https://qgis.org/) Processing Toolbox Plugin, interfacing our tools (simulation, optimization, GIS tasks and algorithm, etc.) in various ways, including easy to use clickable dialogs.
+
+__3. [Algorithms-libs](https://github.com/fire2a/fire2a-lib):__ [Python package](https://pypi.org/project/fire2a-lib/) with algorithms and common GIS tasks.
+
+__4. [Documentation](https://github.com/fire2a/docs):__ User documentation, including QGIS recipes, install & plugin management.
+
+# Getting help
+- [Outreach contact](mailto:fire2a@fire2a.com)
+- [Discord channel](https://discord.gg/wSuSFjrt)
+- [Getting help tutorial/checklist](https://fire2a.github.io/docs/getting-help/)
+
+# Contributing
+All contibutions are welcome, for effectiveness please follow:
+- [Git etiquette](https://github.com/naming-convention/naming-convention-guides/tree/master/git) 
+- [Coding style](https://github.com/fire2a/fire2a-lib/blob/main/CODING.md)
+- Code formatting (each repo has it's own configuration... [clang-format](https://github.com/fire2a/C2F-W/blob/main/CODING.md), [black+friends](https://github.com/fire2a/fire2a-lib/blob/a82260e3d4b3cc0825bf81cd4331f1c9372b2351/pyproject.toml#L83))
+- Issues and Pull Requests minimal consistency:
+   1. Check [getting help](https://fire2a.github.io/docs/getting-help/) before posting an issue
+   1. Pull Requests must be associated to a corresponding issue stating the reasons for it and the expected result
+   2. Add a comment with an overview of the changes made
+   3. One feature/bugfix per pull request
 
 # Developer setup
 1. get QGIS
