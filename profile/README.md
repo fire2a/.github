@@ -39,7 +39,7 @@ All contibutions are welcome, for effectiveness please follow:
    1. Pull Requests must be associated to a corresponding issue that explains the motivation for the change and the expected outcome.
    2. Add a comment with an overview of the changes made
    3. One feature/bugfix per pull request
-   4. If your code involves scientific calculations, include proper citations. Follow the documentation guidelines in `docs/README.md` to reference sources correctly.
+- Scientific citations: _Fire research deals with real life or death risks;_ If your code involves scientific models or calculations, include citations in [BibText format](https://www.bibtex.com/g/bibtex-format/). More info  [Cell2Fire-W/docs/README.md](https://github.com/fire2a/C2F-W/blob/main/docs/README.md)
 
 # Developer setup
 1. get QGIS
