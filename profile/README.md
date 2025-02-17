@@ -36,9 +36,10 @@ All contibutions are welcome, for effectiveness please follow:
 - Code formatting (each repo has it's own configuration... [clang-format](https://github.com/fire2a/C2F-W/blob/main/CODING.md), [black+friends](https://github.com/fire2a/fire2a-lib/blob/a82260e3d4b3cc0825bf81cd4331f1c9372b2351/pyproject.toml#L83))
 - Issues and Pull Requests minimal consistency:
    1. Check [getting help](https://fire2a.github.io/docs/getting-help/) before posting an issue
-   1. Pull Requests must be associated to a corresponding issue stating the reasons for it and the expected result
+   1. Pull Requests must be associated to a corresponding issue that explains the motivation for the change and the expected outcome.
    2. Add a comment with an overview of the changes made
    3. One feature/bugfix per pull request
+- Scientific citations: _Fire research deals with real life or death risks;_ If your code involves scientific models or calculations, include citations in [BibText format](https://www.bibtex.com/g/bibtex-format/). More info  [Cell2Fire-W/docs/README.md](https://github.com/fire2a/C2F-W/blob/main/docs/README.md)
 
 # Developer setup
 1. get QGIS
