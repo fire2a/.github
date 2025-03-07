@@ -1,0 +1,42 @@
+FROM docker.io/qgis/qgis:latest
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+WORKDIR /mnt
+
+RUN apt-get update && \
+    apt-get install -y \
+        git \
+        g++-12 \
+        libboost-all-dev \
+        libeigen3-dev \
+        libtiff-dev \
+        make \
+        --no-install-recommends && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* \
+
+RUN cd C2F-W/Cell2Fire && make clean && make
+RUN chmod +x C2F-W/Cell2Fire/Cell2Fire
+
+
+RUN python3 -m venv venv --system-site-packages && \
+    . venv/bin/activate && \
+    cd fire2a-lib && \
+    pip install -r requirements.build.txt && \
+    pip install -r requirements.code.txt && \
+    pip install -r requirements.txt && \
+    pip install --editable .
+
+
+RUN mkdir -p /root/.local/share/QGIS/QGIS3/profiles/default/python/plugins/ && \
+    ln -s toolbox/fireanalyticstoolbox /root/.local/share/QGIS/QGIS3/profiles/default/python/plugins/ && \
+    cd toolbox/fireanalyticstoolbox/simulator && \
+    ln -s C2F . && \
+    cd ~/.local/share/QGIS/QGIS3/profiles/default/python/plugins && \
+    ln -s /mnt/qgis-pan-europeo/pan_batido . && \
+    ln -s /mnt/qgis-pan-europeo/panettone .
+
+ENV DISPLAY=:0
+
+CMD ["/bin/bash", "-c", ". /mnt/venv/bin/activate && /usr/bin/qgis"]
