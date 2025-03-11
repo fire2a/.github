@@ -3,10 +3,8 @@
 2. [Getting help](#getting-help)
 3. [Contributing](#contributing)
 4. [Developer setup](#developer-setup)
-    1. [Get latest qgis](#1-get-latest-qgis)
-    2. [Get Cell2Fire, python libs and QGIS toolboox-plugin](#2-get-cell2fire-python-libs-and-qgis-toolboox-plugin)
-    3. [symlink them](#3-symlink-them)
-    4. [run](#4-run) 
+    A. [Container](#container)
+    B. [Manual](#manual)
 # About Fire2a
 _We are a team dedicated to finding scientific and technological solutions to mitigate the effects of wildfires. We believe open-source collaboration is key and also providing custom consulting services for real-world organizations. [Contact us](mailto:fire2a@fire2a.com)_
 
@@ -42,11 +40,41 @@ All contibutions are welcome, for effectiveness please follow:
 - Scientific citations: _Fire research deals with real life or death risks;_ If your code involves scientific models or calculations, include citations in [BibText format](https://www.bibtex.com/g/bibtex-format/). More info  [Cell2Fire-W/docs/README.md](https://github.com/fire2a/C2F-W/blob/main/docs/README.md)
 
 # Developer setup
+## Container
+TL;DR: Clone, build, run, enable plugin in QGIS.
+- Clone the repos: [Cell2FireW](https://github.com/fire2a/C2F-W), [Fire-Analytics-ToolBox](https://github.com/fire2a/fire-analytics-qgis-processing-toolbox-plugin), [Algorithms-libs](https://github.com/fire2a/fire2a-lib)
+- Using ![Containerfile](./Containerfile) and ![build.sh](./build.sh). Build the [official QGIS container](https://hub.docker.com/r/qgis/qgis) mounting the repos at home & running a build script; run the container.
+- Enable our plugin in QGIS (installed plugins) and enjoy.
+```bash
+# required packages
+sudo apt install podman git
+
+# the current directory will be shared to the container
+mkdir fire2a
+cd fire2a
+
+git clone git@github.com:fire2a/fire-analytics-qgis-processing-toolbox-plugin.git toolbox
+git clone git@github.com:fire2a/C2F-W.git
+git clone git@github.com:fire2a/fire2a-lib.git
+
+# build the container
+podman build -t qgis-fire2a --volume $(pwd):/root .
+
+# run the container
+podman run -it --env DISPLAY=$DISPLAY --volume /tmp/.X11-unix:/tmp/.X11-unix --volume $(pwd):/root --device /dev/dri --name fire2a qgis-fire2a
+
+# re-run the container
+podman start fire2a
+podman stop fire2a
+```
+
+## Manual
 1. get QGIS
 2. get the repos
 3. symlink them
 4. run
-## 1. Get latest qgis  
+### 1. Get latest qgis  
+```bash
 - steps from https://qgis.org/resources/installation-guide/#debianubuntu  
 - check your distro version `$lsb_release -a`, below is for Debian 12 (bookworm)  
 ```bash
@@ -63,7 +91,7 @@ Signed-By: /etc/apt/keyrings/qgis-archive-keyring.gpg' | sudo tee /etc/apt/sourc
 sudo apt update
 sudo apt install qgis qgis-plugin-grass
 ```
-## 2. Get Cell2Fire, python libs and QGIS toolboox-plugin
+### 2. Get Cell2Fire, python libs and QGIS toolboox-plugin
 ```bash
 # choose install location
 fire=~/fire
@@ -92,8 +120,7 @@ pip install --editable .
 cd $fire
 git clone git@github.com:fire2a/fire-analytics-qgis-processing-toolbox-plugin.git toolbox
 ```
-
-# 3. symlink them
+### 3. symlink them
 ```bash
 # toolbox to QGIS plugins
 mkdir -p ~/.local/share/QGIS/QGIS3/profiles/default/python/plugins/
@@ -104,7 +131,7 @@ ln -s $fire/toolbox/fireanalyticstoolbox .
 cd $fire/toolbox/fireanalyticstoolbox/simulator
 ln -s $fire/C2F .
 ```
-# 4. run
+### 4. run
 ```bash
 source $fire/venv/bin/activate
 qgis
