@@ -2,6 +2,7 @@
 The container runs the latest version of QGIS with all of our tools without having to manually build and configure the
 application on your system. The container is compatible with both Podman and Docker. We recommend using Podman, but the
 instructions found here are easily translated into Docker.
+### Everything that is not saved to the container directory `/mnt` will be lost once the container stops running.
 ## TL;DR
 
 ```bash
@@ -20,6 +21,10 @@ podman run -it --env DISPLAY=$DISPLAY --volume /tmp/.X11-unix:/tmp/.X11-unix --v
 ```
 
 ## Prerequisites
+
+```bash
+sudo apt install podman git
+```
 
 Ensure you have Podman installed on your system. You can find installation instructions in the [official Podman documentation](https://podman.io/docs/installation).
 You must also have Git installed.
