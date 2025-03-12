@@ -17,4 +17,4 @@ cd ..
 plugins_dir=~/.local/share/QGIS/QGIS3/profiles/default/python/plugins/
 mkdir -p $plugins_dir
 ln -sf "$(pwd)/toolbox/fireanalyticstoolbox" "$plugins_dir/fireanalyticstoolbox"
-ln -sf "$(pwd)/C2F-W" toolbox/fireanalyticstoolbox/simulator/C2F
+ln -sf "$(pwd)/C2F-W" "$(pwd)/toolbox/fireanalyticstoolbox/simulator/C2F"
