@@ -9,8 +9,8 @@ instructions found here are easily translated into Docker.
 sudo apt install podman git
 mkdir qgis-vol
 cd qgis-vol
-git clone git@github.com:fire2a/qgis-pan-europeo.git
-git clone git@github.com:fire2a/fire2a-lib.git
+git clone https://github.com/fire2a/qgis-pan-europeo.git
+git clone https://github.com/fire2a/fire2a-lib.git
 git clone https://github.com/fire2a/fire-analytics-qgis-processing-toolbox-plugin.git toolbox
 git clone https://github.com/fire2a/C2F-W.git
 # build the container
@@ -35,8 +35,8 @@ Clone our tools into a dedicated directory.
 ```bash
 mkdir qgis-vol
 cd qgis-vol
-git clone git@github.com:fire2a/qgis-pan-europeo.git
-git clone git@github.com:fire2a/fire2a-lib.git
+git clone https://github.com/fire2a/qgis-pan-europeo.git
+git clone https://github.com/fire2a/fire2a-lib.git
 git clone https://github.com/fire2a/fire-analytics-qgis-processing-toolbox-plugin.git toolbox
 git clone https://github.com/fire2a/C2F-W.git
 ```
