@@ -70,7 +70,7 @@ To build the container image using Podman, navigate to the directory where the c
 and run the following command:
 
 ```bash
-podman build -t qgis-fire2a --volume Path/to/qgis-vol:/mnt -f Containerfile .
+podman build -t qgis-fire2a --volume Path/to/qgis-vol:/mnt .
 ```
 
 This will build the container using a volume mount, sharing all that is in your local directory `qgis-vol` to the
@@ -87,7 +87,13 @@ Once the image is built, you can run QGIS:
 
 **Podman**
 ```bash
-podman run -it --env DISPLAY=$DISPLAY --volume /tmp/.X11-unix:/tmp/.X11-unix --volume ~/Path/to/qgis-vol:/mnt --device /dev/dri --name fire2a qgis-fire2a
+podman run -it \
+  --env DISPLAY=$DISPLAY \
+  --device /dev/dri \
+  --volume /tmp/.X11-unix:/tmp/.X11-unix \
+  --volume ~/Path/to/qgis-vol:/mnt \
+  --name fire2a \
+  qgis-fire2a
 ```
 **Docker**
 ```bash
