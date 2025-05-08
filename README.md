@@ -14,9 +14,9 @@ git clone git@github.com:fire2a/fire2a-lib.git
 git clone https://github.com/fire2a/fire-analytics-qgis-processing-toolbox-plugin.git toolbox
 git clone https://github.com/fire2a/C2F-W.git
 # build the container
-podman build -t qgis-fire2a --volume $(pwd)/qgis-vol:/mnt -f Containerfile .
+podman build -t qgis-fire2a --volume $(pwd)/qgis-vol:/root -f Containerfile .
 # run the container
-podman run -it --env DISPLAY=$DISPLAY --volume /tmp/.X11-unix:/tmp/.X11-unix --volume qgis-vol:/mnt --device /dev/dri --name fire2a qgis-fire2a
+podman run -it --env DISPLAY=$DISPLAY --volume /tmp/.X11-unix:/tmp/.X11-unix --volume qgis-vol:/root --device /dev/dri --name fire2a qgis-fire2a
 # be sure to save your qgis project in the mnt directory so you can access it later, otherwise it will be lost forever
 ```
 
@@ -58,7 +58,7 @@ directory `/mnt` in the container.
 Once the image is built, you can run QGIS using Podman:
 
 ```bash
-podman run -it --env DISPLAY=$DISPLAY --volume /tmp/.X11-unix:/tmp/.X11-unix --volume ~/Path/to/qgis-vol:/mnt --device /dev/dri --name fire2a qgis-fire2a
+podman run -it --env DISPLAY=$DISPLAY --volume /tmp/.X11-unix:/tmp/.X11-unix --volume ~/Path/to/qgis-vol:/mnt --device /dev/dri --name qgis-fire2a qgis-fire2a
 ```
 You can use the QGIS application as you would normally. Everything you save onto the container directory `mnt` will
 be saved to your local directory `qgis-vol`. **If you do not save your project to this directory, it will be lost when
@@ -68,4 +68,10 @@ To access the container's terminal while you're running QGIS, open another local
 ```bash
 podman exec -it qgis-fire2a bash
 ```
+
+To open the same container again do
+```bash
+podman start qgis-fire2a
+```
+
 ### Remember that everything that is not saved to the container directory `/mnt` will be lost once the container stops running.
