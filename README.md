@@ -19,7 +19,7 @@ cd qgis-vol
 git clone git@github.com:fire2a/C2F-W.git
 git clone git@github.com:fire2a/fire-analytics-qgis-processing-toolbox-plugin.git toolbox
 git clone git@github.com:fire2a/fire2a-lib.git
-git clone git@github.com:fire2a/qgis-pan-europeo.git
+git clone git@github.com:fire2a/qgis-pan-europeo.git pan-europeo
 
 # build the container "qgis-fire2a" image
 podman build -t qgis-fire2a --volume $(pwd)/qgis-vol:/root -f Containerfile .

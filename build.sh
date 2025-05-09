@@ -18,3 +18,5 @@ plugins_dir=~/.local/share/QGIS/QGIS3/profiles/default/python/plugins
 mkdir -p $plugins_dir
 ln -sf ~/toolbox/fireanalyticstoolbox $plugins_dir/fireanalyticstoolbox
 ln -sf ~/C2F-W ~/toolbox/fireanalyticstoolbox/simulator/C2F
+ln -sf ~/pan-europeo/pan_batido $plugins_dir/pan_batido
+ln -sf ~/pan-europeo/panettone $plugins_dir/panettone
