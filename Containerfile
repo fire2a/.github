@@ -9,14 +9,16 @@ RUN apt-get update && \
         libboost-all-dev \
         libeigen3-dev \
         libtiff-dev \
+        python3-venv \
+        python3-pip \
         make \
         --no-install-recommends
 
-WORKDIR /root
-
-ENV DISPLAY=:0
+COPY build.sh .
 
 RUN chmod +x build.sh && ./build.sh
+
+ENV DISPLAY=:0
 
 CMD ["/bin/bash", "-c", "source /root/venv/bin/activate && qgis"]
 # CMD ["tail", "-f", "/dev/null"]
