@@ -5,6 +5,7 @@
 4. [Developer setup](#developer-setup)
    - [Container](#container)
    - [Manual](#manual)
+   - [Windows](../windows_dev_setup.md)
    
 # About Fire2a
 _We are a team dedicated to finding scientific and technological solutions to mitigate the effects of wildfires. We believe open-source collaboration is key and also providing custom consulting services for real-world organizations. [Contact us](mailto:fire2a@fire2a.com)_
